@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movie Recommendations App
+
+This is a Movie Recommendations web application built with Next.js, Tailwind CSS, and Weaviate. The app allows users to search, filter, and view detailed information about movies. It also includes pagination for easier navigation through the list of movies.
+
+## Features
+
+- **Search Movies**: Users can search for movies by title or description.
+- **Filter by Genre**: Users can filter movies by genre.
+- **Detailed Movie View**: Clicking on a movie displays a modal with detailed information.
+- **Pagination**: The list of movies is paginated for easier navigation.
+
+## Technologies Used
+
+- **Next.js**: A React framework for server-side rendering and static site generation.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Weaviate**: An open-source vector search engine.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Node.js**: Ensure you have Node.js installed. You can download it from [here](https://nodejs.org/).
+- **Docker**: Ensure you have Docker installed. You can download it from [here](https://www.docker.com/products/docker-desktop).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/chamallakshika09/movie-recommendation
+   cd movie-recommendation
+   ```
 
-## Learn More
+2. **Install dependencies**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Start Weaviate**:
+   Make sure Docker is running on your machine. Then, start Weaviate using Docker Compose:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   docker compose up -d
+   ```
 
-## Deploy on Vercel
+4. **Start the Next.js application**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Usage
+
+1.  Open your browser and navigate to `http://localhost:3000`.
+2.  Use the search bar to search for movies by title or description.
+3.  Use the dropdown menu to filter movies by genre.
+4.  Click on a movie to view detailed information in a modal.
+5.  Use the pagination controls to navigate through the list of movies.
+
+### Project Structure
+
+- /app: Contains the Next.js pages and layout.
+- /components: Contains reusable React components.
+- /context: Contains the React context for managing state.
+- /data: Contains the initial movie data in JSON format.
+- /types: Contains TypeScript type definitions.
+- /utils: Contains utility functions for interacting with Weaviate.
+
+### Context API
+
+The app uses the React Context API to manage the search text, selected genre, selected movie, and pagination state.
+
+### API Integration
+
+The app interacts with Weaviate for data storage and retrieval. The following utility functions are used:
+
+- getWeaviateClient: Initializes and returns the Weaviate client.
+- initializeDB: Initializes the database schema and prepopulates it with initial data.
+- fetchMovies: Fetches the list of movies from Weaviate.
